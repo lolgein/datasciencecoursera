@@ -31,6 +31,7 @@ FinalData <- rbind(data3,data5)
 
 Final <- FinalData[order(FinalData$Subject),]
 
+#Put activity labels in the column
 ActivityLabels <- read.table("UCI HAR Dataset/activity_labels.txt", header=FALSE)
 A_Labels <- sapply(ActivityLabels[,2], as.character)
 z <- Final[,2]
@@ -38,11 +39,12 @@ for(i in 1:6){
 	z <- replace(z, z==i, A_Labels[i])
 }
 
+#Gets only the columns with std and mean in the name
 Final[,2] <- z
 std <- grep("std",names(Final))
 mean <- grep("mean", names(Final))
 group <- c(1,2,std,mean)
 Final2 <- Final[,group]
 
+#Calculate the mean of each activity from each subject.
 FinalMean <- aggregate(Final2[,3:81], list(Subject=Final2$Subject,Activity=Final2$Activity),mean)
-print(FinalMean)
