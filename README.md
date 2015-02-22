@@ -11,5 +11,5 @@ The next steps show how the script changes the data into tidy data:
 4.  Use descriptive activity names to name the activities in the data set.
 5.  Extracts only the measurements on the mean and std for each measurement.
 6.  The last step creates a data set with the average of each variable for each activity and each subject.
-
+1. The raw data.
 The variable names( column names etc) and explanation are added in the codebook.
